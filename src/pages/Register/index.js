@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 
 import { toast } from 'react-toastify';
 import { isEmail } from 'validator';
-
 import { get } from 'lodash';
 import { Container } from '../../styles/GlobalStyles';
 import { Form } from './styled';
@@ -28,12 +27,13 @@ export default function Register() {
       formErrors = true;
       toast.error('Email invalido');
     }
-    if (password.length < 3 || nome.length > 255) {
+    if (password.length < 6 || password.length > 50) {
       formErrors = true;
       toast.error('Senha deve ter entre 6 e 50 caracteres');
     }
 
     if (formErrors) return;
+
     try {
       await axios.post('/users/', { nome, password, email });
       toast.success('Cadastro feito com sucesso!');
@@ -60,7 +60,7 @@ export default function Register() {
         <label htmlFor="email">
           {' E-mail: '}
           <input
-            type="email"
+            type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Digite seu e-mail"
