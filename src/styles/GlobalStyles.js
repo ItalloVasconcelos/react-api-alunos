@@ -33,7 +33,12 @@ button {
   color: #fff;
   padding: 10px 20px;
   font-weight: 700;
+transition: all 300ms;
+
 }
+ button:hover {
+  filter: brightness(85%);
+  }
 a {
   text-decoration: none;
    color: ${colors.primaryColor};
