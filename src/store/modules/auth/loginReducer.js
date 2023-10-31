@@ -15,6 +15,21 @@ export default function botaoClicadoReducer(state = initialState, action) {
       newState.isLoading = true;
       return newState;
     }
+    case types.REGISTER__REQUEST: {
+      const newState = { ...state };
+      newState.isLoading = true;
+      return newState;
+    }
+    case types.REGISTER_FAILURE: {
+      const newState = { ...state };
+      newState.isLoading = false;
+      return newState;
+    }
+    case types.REGISTER_CREATED_SUCCESS: {
+      console.log(action.payload);
+      const newState = { ...state };
+      return newState;
+    }
     case types.LOGIN_FAILURE: {
       const newState = { ...initialState };
       return newState;
